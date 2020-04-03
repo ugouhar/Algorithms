@@ -1,8 +1,8 @@
 /*
 Bellman Ford's algorithm is used to find the shortest paths 
 from the source vertex to all other vertices in a weighted graph. 
-It depends on the following concept: Shortest path contains at most  edges, 
-because the shortest path couldn't have a cycle.
+It depends on the following concept: 
+Shortest path contains at most n-2 edges, because the shortest path couldn't have a cycle.
 This algorithm depends on the relaxation principle where the shortest distance
 for all vertices is gradually replaced by more accurate values until 
 eventually reaching the optimum solution.
