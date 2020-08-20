@@ -7,82 +7,24 @@
 	in O(V^3) , where V is the number of vertices in a graph.
 */
 
-#include<bits/stdc++.h>
-#define ll long long int
-#define ld long double
-#define pll pair<ll,ll>
-#define vll vector<ll>
-#define pb push_back
-#define MAX5 100005
-#define inf 1000000000000000000
-#define fastIO ios_base::sync_with_stdio(0);\
-               cin.tie(NULL);\
-               cout.tie(NULL)
-using namespace std;
-
-void print(ll arr[][11],ll n, ll m)
-{
-	for(ll i=1 ; i<=n ; i++)
-	{
-		for(ll j=1 ; j<=m ; j++)
-			cout<<arr[i][j]<<' ';
-		cout<<endl;
-	}
-	cout<<endl;
+const int N = 100;
+int dp[N][N];
+void init(){
+  for(ll i=0 ; i<N ; i++){
+    for(ll j=0 ; j<N ; j++){
+      dp[i][j]=inf;
+    }
+  }
+  for(ll i=0 ; i<N ; i++){
+    dp[i][i]=0;
+  }
 }
-
-ll adj[11][11];
-
-
-void init(ll n)
-{
-	for(ll i=0 ; i<=n ; i++)
-	{
-		for(ll j=0 ; j<=n ; j++)
-		{
-			adj[i][j]=inf;
-		}
-	}
-	for(ll i=1 ; i<=n ; i++)
-		adj[i][i]=0;
-}
-
-
-void floydWarshall(ll n)
-{
-
-	for(ll k=1 ; k<=n ; k++)
-	{
-		for(ll i=1 ; i<=n ; i++)
-		{
-			for(ll j=1 ; j<=n ; j++)
-			{
-				adj[i][j] = min(adj[i][j] , adj[i][k]+adj[k][j]);
-			}
-		}
-	}
-	print(adj,4,4);
-
-
-}
-int main()
-{
-	fastIO;
-	freopen("input.txt","r",stdin);
-	
-	init(10);
-
-	ll n,m;	//n nodes, m edges
-	cin>>n>>m;
-
-	for(ll i=0 ; i<m ; i++)
-	{
-		ll u, v, cost;	//edge from u to v
-		cin>>u>>v>>cost;
-		adj[u][v]=cost;
-	}
-
-	floydWarshall(n);
-
-	return 0;
+void floydWarshall(int n){
+  for(int k=0 ; k<n ; k++){
+    for(int i=0 ; i<n ; i++){
+      for(int j=0 ; j<n ; j++){
+          dp[i][j] = min(dp[i][j], dp[i][k]+dp[k][j]);
+      }
+    }
+  }
 }
