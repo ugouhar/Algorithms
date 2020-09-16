@@ -13,8 +13,8 @@ ll binary_search(ll a[], ll n, ll key) {
     return -1;
 }
 
-ll my_lower_bound(ll a[], ll n, ll i, ll key) {
-    ll low = i, high = n - 1;
+ll my_lower_bound(ll a[], ll n, ll key) {
+    ll low = 0, high = n - 1;
     while(low <= high) {
         ll mid = (low + high) / 2;
         if(a[mid] < key) {
