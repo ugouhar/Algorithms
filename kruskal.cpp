@@ -30,7 +30,7 @@ void unionab(ll a, ll b) {
 }
 
 ll kruskal(vector < edge > elist) {
-  initialize();
+  init();
   sort(elist.begin(), elist.end(), comp);
   ll cost = 0;
   for (auto i: elist) {
