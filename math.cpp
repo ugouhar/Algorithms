@@ -34,29 +34,30 @@ ll modInv(ll A,ll M){   // To find multiplicative inverse of
 
 
 
-ll fact[100], ifact[100], inv[100];	//factorial and inverse factorial
+const ll N = 100005;
 
-void invFact(ll M){
-
-    ifact[0] = 1;
-    ifact[1] = 1;
-    for(ll i=0 ; i<100 ; i++){
-        inv[i] = (inv[M%i] * (M - M/i)) % M;
-    }
-
-    for(ll i=2 ; i<100 ; i++){
-        ifact[i] = (ifact[i-1] * inv[i]) % M;
-    }
-}
-
-void fact_ifact(ll m){
+ll fact[N], ifact[N], inv[N];	//factorial and inverse factorial
+ 
+void factorial(ll M){
 	fact[0]=1;
-	ifact[0]=1;
-	for(ll i=1 ; i<100 ; i++){
-		fact[i]=(i%m * fact[i-1])%m;
-		ifact[i]=(modInv(i,m)*ifact[i-1])%m;
+	for(ll i=1 ; i<N ; i++){
+		fact[i]=(i%M * fact[i-1])%M;
 	}
 }
+ 
+void ifactorial(ll M){
+  ifact[0] = 1;
+  ifact[1] = 1;
+  inv[0] = 1;
+  inv[1] = 1;
+  for(ll i=2 ; i<N ; i++){
+      inv[i] = (inv[M%i] * (M - M/i)) % M;
+  }
+  for(ll i=2 ; i<N ; i++){
+      ifact[i] = (ifact[i-1] * inv[i]) % M;
+  }
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////
